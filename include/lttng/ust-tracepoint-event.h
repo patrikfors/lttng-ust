@@ -857,10 +857,12 @@ static const char __tp_event_signature___##_provider##___##_name[] = 	\
 #endif
 
 #undef TRACEPOINT_LOGLEVEL
-#define TRACEPOINT_LOGLEVEL(__provider, __name, __loglevel)		   \
+#define TRACEPOINT_LOGLEVEL(__provider, __name, __loglevel)	           \
 static const int _loglevel_value___##__provider##___##__name = __loglevel; \
 LTTNG_TP_EXTERN_C const int *_loglevel___##__provider##___##__name	   \
-		__attribute__((visibility("hidden"))) =			   \
+		__attribute__((visibility("hidden")));                     \
+const int *_loglevel___##__provider##___##__name                           \
+		__attribute__((visibility("hidden"))) =                    \
 		&_loglevel_value___##__provider##___##__name;
 
 #include TRACEPOINT_INCLUDE
